@@ -25,10 +25,6 @@ Una biblioteca ligera e independiente del framework para crear visualizaciones d
 DButton está disponible en PyPI y se puede instalar mediante pip:
 
 ```bash
-# Instalar desde PyPI (recomendado)
-pip install dbutton
-
-# O instalar directamente desde GitHub
 pip install git+https://github.com/phtndv/dbutton.git
 ```
 
@@ -59,7 +55,7 @@ data = [
 ]
 
 # Initialize the DButton with your data
-button = dbutton.DButton(
+button = dbutton(
     data_source=data,          # Your data source
     fields=["name", "role"],   # Fields to display in the list
     page_size=5,               # Items per page
@@ -113,7 +109,7 @@ data = [
 ]
 
 # Initialize with your data
-button = dbutton.DButton(data_source=data, fields=["name", "role"], page_size=5)
+button = dbutton(data_source=data, fields=["name", "role"], page_size=5)
 handler = dbutton.AiogramHandler(button, bot)
 
 @dp.message(commands=["start"])
@@ -143,7 +139,7 @@ data = [
 ]
 
 # Initialize with your data
-button = dbutton.DButton(data_source=data, fields=["name", "role"], page_size=5)
+button = dbutton(data_source=data, fields=["name", "role"], page_size=5)
 handler = dbutton.PyrogramHandler(button, app)
 
 @app.on_message(filters.command("start"))
@@ -159,14 +155,14 @@ app.run()
 
 ## 📚 Referencia de la API (dbutton)
 
-### Clase `dbutton.DButton`
+### Clase `dbutton.dbutton`
 
 La clase principal para crear interfaces de botones interactivas y paginadas.
 
 ### Inicialización
 
 ```python
-dbutton.DButton(
+dbutton(
     data_source: Iterable[Dict[str, Any]],
     fields: List[str],
     page_size: int = 20,
@@ -255,10 +251,21 @@ button.set_filters()
 
 ```python
 # Mostrar campos específicos con tamaño de página personalizado
-button = DButton(
+button = dbutton(
     data_source=data,
     fields=["username", "email", "status"],
     page_size=10
+)
+```
+
+### Personalización de Texto de Botones
+
+```python
+# Personalizar el texto mostrado en los botones
+button = dbutton(
+    data_source=data,
+    fields=["name", "role"],
+    button_text=lambda item: f"{item['name']} ({item['role']})"
 )
 ```
 

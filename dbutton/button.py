@@ -48,10 +48,11 @@ class dbutton:
     def _init_framework_handlers(self):
         """Initialize framework-specific handlers"""
         try:
-            from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+            from telegram import InlineKeyboardButton as PTBInlineKeyboardButton
+            from telegram import InlineKeyboardMarkup as PTBInlineKeyboardMarkup
             self._handlers['python-telegram-bot'] = {
-                'button': InlineKeyboardButton,
-                'markup': InlineKeyboardMarkup
+                'button': PTBInlineKeyboardButton,
+                'markup': PTBInlineKeyboardMarkup
             }
         except ImportError:
             pass
