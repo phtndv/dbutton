@@ -1,50 +1,50 @@
 # DButton v1.0.1
 
-[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Versión de Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A lightweight, framework-agnostic Python library for creating interactive, paginated data displays with advanced filtering capabilities for Telegram bots. DButton simplifies the process of displaying and navigating through large datasets in a user-friendly way, with native support for all major Python Telegram bot frameworks.
+Una biblioteca ligera e independiente del framework para crear visualizaciones de datos interactivas y paginadas con capacidades avanzadas de filtrado para bots de Telegram. DButton simplifica el proceso de visualización y navegación a través de grandes conjuntos de datos de manera amigable, con soporte nativo para todos los frameworks principales de bots de Python para Telegram.
 
-## ✨ Features
+## ✨ Características
 
-- **Multi-Framework Support**: Seamlessly works with:
+- **Soporte para Múltiples Frameworks**: Funciona perfectamente con:
   - python-telegram-bot (v20+)
   - Aiogram (v3+)
   - Pyrogram (v2+)
-- **Smart Pagination**: Effortlessly navigate through large datasets
-- **Advanced Filtering**: Apply and combine multiple filters on the fly
-- **Interactive Interface**: Automatic button generation with callback handling
-- **Highly Customizable**: Control display fields, page size, and button layouts
-- **Type Safety**: Full type hints for better IDE support and code reliability
-- **Asynchronous**: Built with modern async/await patterns for optimal performance
-- **Flexible Data Sources**: Works with any iterable data structure
-- **Custom Serialization**: Full control over callback data handling
+- **Paginación Inteligente**: Navega fácilmente a través de grandes conjuntos de datos
+- **Filtrado Avanzado**: Aplica y combina múltiples filtros al instante
+- **Interfaz Interactiva**: Generación automática de botones con manejo de devoluciones de llamada
+- **Altamente Personalizable**: Controla los campos mostrados, tamaño de página y diseño de botones
+- **Tipado Estático**: Tipos completos para mejor soporte del IDE y confiabilidad del código
+- **Asíncrono**: Construido con patrones modernos async/await para un rendimiento óptimo
+- **Fuentes de Datos Flexibles**: Funciona con cualquier estructura de datos iterable
+- **Serialización Personalizada**: Control total sobre el manejo de datos de devolución de llamada
 
-## 🚀 Installation
+## 🚀 Instalación
 
-DButton is available on PyPI and can be installed via pip:
+DButton está disponible en PyPI y se puede instalar mediante pip:
 
 ```bash
-# Install from PyPI (recommended)
+# Instalar desde PyPI (recomendado)
 pip install dbutton
 
-# Or install directly from GitHub
+# O instalar directamente desde GitHub
 pip install git+https://github.com/phtndv/dbutton.git
 ```
 
-### 📦 Dependencies
+### 📦 Dependencias
 
-- **Python**: 3.8 or higher
-- **Required**: 
+- **Python**: 3.8 o superior
+- **Requerido**:
   - `typing-extensions`
-- **Framework Dependencies** (install as needed):
-  - `python-telegram-bot>=20.0` for python-telegram-bot support
-  - `aiogram>=3.0` for Aiogram support
-  - `pyrogram>=2.0` for Pyrogram support
+- **Dependencias de Frameworks** (instalar según sea necesario):
+  - `python-telegram-bot>=20.0` para soporte de python-telegram-bot
+  - `aiogram>=3.0` para soporte de Aiogram
+  - `pyrogram>=2.0` para soporte de Pyrogram
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
-### Basic Usage with python-telegram-bot
+### Uso Básico con python-telegram-bot
 
 ```python
 import dbutton
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Aiogram (v2+)
+### Aiogram (v2 o superior)
 
 ```python
 from aiogram import Bot, Dispatcher, types
@@ -157,13 +157,13 @@ async def callback(client, callback_query):
 app.run()
 ```
 
-## 📚 API Reference (dbutton)
+## 📚 Referencia de la API (dbutton)
 
-### `dbutton.DButton` Class
+### Clase `dbutton.DButton`
 
-The main class for creating interactive, paginated button interfaces.
+La clase principal para crear interfaces de botones interactivas y paginadas.
 
-### Initialization
+### Inicialización
 
 ```python
 dbutton.DButton(
@@ -177,116 +177,117 @@ dbutton.DButton(
 )
 ```
 
-#### Parameters
+#### Parámetros
 
-| Parameter | Type | Description |
+| Parámetro | Tipo | Descripción |
 |-----------|------|-------------|
-| `data_source` | `Iterable[Dict[str, Any]]` | Your data to paginate (list of dictionaries) |
-| `fields` | `List[str]` | Field names to display (max 10) |
-| `page_size` | `int` | Number of items per page (default: 20) |
-| `filters` | `Dict[str, Any]` | Initial filters to apply (optional) |
-| `callback_data_serializer` | `Callable` | Custom callback data serializer (optional) |
-| `callback_data_deserializer` | `Callable` | Custom callback data deserializer (optional) |
+| `data_source` | `Iterable[Dict[str, Any]]` | Tus datos a paginar (lista de diccionarios) |
+| `fields` | `List[str]` | Nombres de campos a mostrar (máx. 10) |
+| `page_size` | `int` | Número de elementos por página (predeterminado: 20) |
+| `filters` | `Dict[str, Any]` | Filtros iniciales a aplicar (opcional) |
+| `callback_data_serializer` | `Callable` | Serializador personalizado para datos de devolución de llamada (opcional) |
+| `callback_data_deserializer` | `Callable` | Deserializador personalizado para datos de devolución de llamada (opcional) |
 
-### Core Methods
+### Métodos Principales
 
 #### `build_message(framework: str = 'python-telegram-bot') -> Tuple[str, Any]`
 
-Generate the message text and keyboard markup for the current page.
+Genera el texto del mensaje y el marcado del teclado para la página actual.
 
-**Parameters:**
+**Parámetros:**
 
-- `framework`: The framework to use (`'python-telegram-bot'`, `'aiogram'`, or `'pyrogram'`)
+- `framework`: El framework a utilizar (`'python-telegram-bot'`, `'aiogram'`, o `'pyrogram'`)
 
-**Returns:**
+**Retorna:**
 
-- `Tuple[str, Any]`: A tuple containing the message text and keyboard markup
+- `Tuple[str, Any]`: Una tupla que contiene el texto del mensaje y el marcado del teclado
 
 #### `set_filters(**filters) -> None`
 
-Update the active filters and reset to the first page.
+Actualiza los filtros activos y reinicia a la primera página.
 
-**Parameters:**
+**Parámetros:**
 
-- `**filters`: Key-value pairs to filter the data by
+- `**filters`: Pares clave-valor de nombres de campo y valores por los que filtrar
 
 #### `next_page() -> bool`
 
-Move to the next page if available.
+Avanza a la siguiente página si está disponible.
 
-**Returns:**
+**Retorna:**
 
-- `bool`: `True` if the page changed, `False` if already on the last page
+- `bool`: `True` si la página cambió, `False` si ya estaba en la última página
 
 #### `prev_page() -> bool`
 
-Move to the previous page if available.
+Retrocede a la página anterior si está disponible.
 
-**Returns:**
-- `bool`: `True` if the page changed, `False` if already on the first page
+**Retorna:**
+
+- `bool`: `True` si la página cambió, `False` si ya estaba en la primera página
 
 #### `handle_callback(update: Any, context: Any = None) -> bool`
 
 Handle callback queries from Telegram buttons.
 
-**Parameters:**
+**Parámetros:**
 
-- `update`: The update object from the framework
-- `context`: The context object (if using python-telegram-bot)
+- `update`: El objeto de actualización del framework
+- `context`: El objeto de contexto (si se usa python-telegram-bot)
 
-**Returns:**
+**Retorna:**
 
-- `bool`: `True` if the callback was handled, `False` otherwise
+- `bool`: `True` si la devolución de llamada fue manejada, `False` en caso contrario
 
-## Examples
+## Ejemplos
 
-### Filtering Data
+### Filtros de Datos
 
 ```python
-# Apply filters
-button.set_filters(role="Admin")
+# Aplicar múltiples filtros
+button.set_filters(role="Admin", status="active")
 
-# Clear filters
+# Limpiar filtros
 button.set_filters()
 ```
 
-### Customizing Display
+### Personalización de la Visualización
 
 ```python
-# Show specific fields with custom page size
+# Mostrar campos específicos con tamaño de página personalizado
 button = DButton(
-    data_source=users,
+    data_source=data,
     fields=["username", "email", "status"],
     page_size=10
 )
 ```
 
-## License
+## Licencia
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-## Contributing
+## Contribuciones
 
-Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) before submitting a pull request.
+¡Las contribuciones son bienvenidas! Siéntete libre de enviar un Pull Request.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Haz un fork del repositorio
+2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
+3. Haz commit de tus cambios (`git commit -m 'Añadir una característica asombrosa'`)
+4. Sube los cambios a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-## Changelog
+## Registro de Cambios
 
 ### [1.0.1] - 2025-08-28
 
-#### Added
+#### Añadido
 
-- Framework-agnostic design with consistent DButton API
-- Native support for python-telegram-bot, Aiogram, and Pyrogram
-- Custom callback serialization/deserialization
-- Comprehensive type hints and documentation
-- Unit tests for all frameworks
+- Diseño independiente del framework con API consistente de DButton
+- Soporte nativo para python-telegram-bot, Aiogram y Pyrogram
+- Serialización y deserialización personalizadas de datos de devolución de llamada
+- Tipos completos y documentación
+- Pruebas unitarias para todos los frameworks
 
 ### [1.0.0] - 2025-08-27
 
-- Initial release
+- Lanzamiento inicial
