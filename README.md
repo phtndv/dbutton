@@ -40,10 +40,23 @@ pip install git+https://github.com/phtndv/dbutton.git
 
 ## 🚀 Inicio Rápido
 
-### Uso Básico con python-telegram-bot
+### Importación
+
+Puedes importar la clase `dbutton` de dos maneras:
 
 ```python
+# Opción 1: Importar directamente la clase
+try:
+    from dbutton import dbutton
+except ImportError:
+    # Si falla, intentar importar desde el módulo
+    from dbutton.dbutton import dbutton
+
+# Opción 2: Importar el módulo y acceder a la clase
 import dbutton
+# Luego usar dbutton.dbutton()
+
+# El resto de las importaciones del framework
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 
@@ -54,12 +67,22 @@ data = [
     # ... more items ...
 ]
 
-# Initialize the DButton with your data
+# Inicializar dbutton con tus datos
+# Si usaste 'from dbutton import dbutton'
 button = dbutton(
-    data_source=data,          # Your data source
-    fields=["name", "role"],   # Fields to display in the list
-    page_size=5,               # Items per page
-    filters={"status": "active"}  # Optional initial filters
+    data_source=data,          # Tu fuente de datos
+    fields=["name", "role"],   # Campos a mostrar en la lista
+    page_size=5,               # Items por página
+    framework="python-telegram-bot",  # Especifica el framework
+    filters={"status": "active"}  # Filtros iniciales opcionales
+
+# O si usaste 'import dbutton', entonces:
+# button = dbutton.dbutton(
+#     data_source=data,
+#     fields=["name", "role"],
+#     page_size=5,
+#     framework="python-telegram-bot"
+# )
 )
 
 # Command handler for /start
@@ -254,7 +277,8 @@ button.set_filters()
 button = dbutton(
     data_source=data,
     fields=["username", "email", "status"],
-    page_size=10
+    page_size=10,
+    framework="python-telegram-bot"  # Asegúrate de especificar el framework
 )
 ```
 
@@ -265,6 +289,7 @@ button = dbutton(
 button = dbutton(
     data_source=data,
     fields=["name", "role"],
+    framework="python-telegram-bot",  # No olvides el framework
     button_text=lambda item: f"{item['name']} ({item['role']})"
 )
 ```
