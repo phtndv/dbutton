@@ -1,10 +1,10 @@
 from typing import Any, Dict, Optional, Union, Type, Tuple
-from .button import dbutton as DButton
+from .button import dbutton
 
 class BaseHandler:
     """Base handler for framework-specific implementations"""
     
-    def __init__(self, button_instance: 'DButton', bot_instance: Any = None):
+    def __init__(self, button_instance: 'dbutton', bot_instance: Any = None):
         """
         Initialize with a dbutton instance and optional bot instance
         
@@ -12,7 +12,7 @@ class BaseHandler:
             button_instance: An instance of dbutton
             bot_instance: Optional bot/client instance for the framework
         """
-        if not isinstance(button_instance, DButton):
+        if not isinstance(button_instance, dbutton):
             raise TypeError("button_instance must be an instance of dbutton")
             
         self.button = button_instance
@@ -52,7 +52,7 @@ class PythonTelegramBotHandler(BaseHandler):
             
         await query.answer()
         
-        # Use DButton's built-in handler
+        # Use dbutton's built-in handler
         handled = await self.button.handle_callback(update, context)
         
         if handled:
@@ -130,7 +130,7 @@ class AiogramHandler(BaseHandler):
         if not isinstance(callback_query, types.CallbackQuery):
             raise TypeError("callback_query must be an instance of aiogram.types.CallbackQuery")
         
-        # Use DButton's built-in handler with a mock update
+        # Use dbutton's built-in handler with a mock update
         class MockUpdate:
             def __init__(self, query):
                 self.callback_query = query
@@ -191,7 +191,7 @@ class AiogramHandler(BaseHandler):
 class PyrogramHandler(BaseHandler):
     """Handler for Pyrogram framework"""
     
-    def __init__(self, button_instance: 'DButton', client: Any = None):
+    def __init__(self, button_instance: 'dbutton', client: Any = None):
         """
         Initialize with dbutton and optional Pyrogram client
         
@@ -228,7 +228,7 @@ class PyrogramHandler(BaseHandler):
         if not isinstance(callback_query, CallbackQuery):
             raise TypeError("callback_query must be an instance of pyrogram.types.CallbackQuery")
         
-        # Use DButton's built-in handler with a mock update
+        # Use dbutton's built-in handler with a mock update
         class MockUpdate:
             def __init__(self, query):
                 self.callback_query = query

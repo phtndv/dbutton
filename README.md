@@ -1,9 +1,9 @@
-# DButton v1.0.1
+# dbutton v1.0.1
 
 [![Versión de Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Una biblioteca ligera e independiente del framework para crear visualizaciones de datos interactivas y paginadas con capacidades avanzadas de filtrado para bots de Telegram. DButton simplifica el proceso de visualización y navegación a través de grandes conjuntos de datos de manera amigable, con soporte nativo para todos los frameworks principales de bots de Python para Telegram.
+Una biblioteca ligera e independiente del framework para crear visualizaciones de datos interactivas y paginadas con capacidades avanzadas de filtrado para bots de Telegram. dbutton simplifica el proceso de visualización y navegación a través de grandes conjuntos de datos de manera amigable, con soporte nativo para todos los frameworks principales de bots de Python para Telegram.
 
 ## ✨ Características
 
@@ -289,7 +289,7 @@ Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICEN
 
 #### Añadido
 
-- Diseño independiente del framework con API consistente de DButton
+- Diseño independiente del framework con API consistente de dbutton
 - Soporte nativo para python-telegram-bot, Aiogram y Pyrogram
 - Serialización y deserialización personalizadas de datos de devolución de llamada
 - Tipos completos y documentación
